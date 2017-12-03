@@ -1,11 +1,11 @@
 The  executable program kyc_csv_to_adobe_xml.exe (or the python program kyc_csv_to_adobe_xml.py) converts files downloaded 
-from NBIN compass into files that can populate  New Client Account Forms from July 2017.
+from NBIN compass into files that can populate  iA Securities New Client Account Forms from July 2017.
 
 
 Here is what you need to do to get it working:
  
 Step 1:  Get the program installed.
-* Option 1
+* Option 1.  Use the prebuilt 
 	This is the simpler option.  You should have a program kyc_csv_to_adobe_xml.exe already in the folder.  You can run this to produce the desired
 	output.  
 * Option 2.  Install Python and use a the script  kyc_csv_to_adobe_xml.py
@@ -29,9 +29,19 @@ Step 2: Download files from NBIN
 	
 Step 3:  Option Install Python
     If you want to edit the source code befor you run it, or you are not on windows, you will need Python 3.6 or later installed on your system. 
-	
 
-Step4:	
+Step 4:   Download the code.  	
+     The code can be retrieved from GitHub.  
+	 https://github.com/dougransom/kyc_csv_to_xml/releases
+	 
+	 Download the zip file kyc_csv_to_xml.zip into your new folder and 
+	 extract the files into that folder.  You can use windows explorer
+	 or 
+	    Expand-Archive '..\account profile\dist\kyc_csv_to_xml.zip'  -DestinationPath .
+	in Windows Powershell 
+	 
+
+Step5:	
 	Start Windows Powershell or Windows Command Prompt
 	https://winaero.com/blog/all-ways-to-open-powershell-in-windows-10/
 	
@@ -41,7 +51,7 @@ Step4:
 	i.e. cd "C:\Users\Doug\OneDrive\doug\work in progress\account profile\".  
 	
 	
-Step5:
+Step6:
 	In your Power Shell
 	
 	kyc_csv_to_adobe_xml.exe name-of-your-csv-file name-of-your-address-file
