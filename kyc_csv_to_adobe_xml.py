@@ -67,7 +67,6 @@ def row_to_xml(row,letters_dict):
 
 
 
-
     def iso_to_american_date(isodate):
         day = isodate[-2:]
         year = isodate[0:4]
@@ -75,6 +74,7 @@ def row_to_xml(row,letters_dict):
         return "{0}/{1}/{2}".format(month,day,year)
 
 
+	#field names are different in CSV and the PDF, so transform them
     mapCSVtoXML = {
      'Account Name' : 'L name',
      'Client RR Code': 'IA Code',
@@ -87,6 +87,7 @@ def row_to_xml(row,letters_dict):
         'Employer description': 'Employer Name and Address',
     }
 
+	#any fields not in mapCSVtoXML require special handling
     write_xml_field('ClientEmailAddressElectronic', '409 2 e mail',row["Client Email Address"])
 
     birthday=iso_to_american_date(row['Client Date of birth'])
@@ -120,6 +121,11 @@ def row_to_xml(row,letters_dict):
 
     account_letters=letters_dict[client_number]
 
+	#if the client has an account open, have it checked in in the NCAF.
+	#some of the form fields don't match their names.
+    #for example, if a client as a -X account, the "Y"	 field must be checked in the NCAF, which will
+	#display as "X".
+	
     def write_on(letterfield):
 
         translate_letters = {'Z':'O', 'Y':'Z', 'W':'6','T':'W','S':'7','R':'8',
@@ -170,6 +176,8 @@ import csv
 from string import ascii_uppercase
 from itertools import groupby
 
+#from the name and address file, we figure out the letters of accounts that need to be updated
+#along with the address info.
 with open(infile_address,"r" ) as csvaddress:
     address_reader= csv.DictReader(csvaddress, delimiter=',', quotechar='"')
     address_reader.fieldnames[0]="Account Number" #fix first field name
