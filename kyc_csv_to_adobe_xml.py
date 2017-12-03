@@ -3,7 +3,7 @@ import sys
 import xml.etree.ElementTree as ET
 import re
 
-version = 0.2
+version = 0.3
 
 program_description =   f"""Creates XML files that can be used to populate iA Securities New Client Account Forms (July 2017 Version). \r\n
 Supply the KYC and Name and Address File Export form NBCN Compass https://www.nbin.ca/lrportal/group/nbcn-compass/dataexport    
